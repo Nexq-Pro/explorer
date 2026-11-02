@@ -1,6 +1,6 @@
 # bb84 explorer
 
-Source recovered from [explorer.bb84.sh](https://explorer.bb84.sh). There is no public GitHub repo for this site. The production build was a Vite bundle with source maps disabled, so this is the unminified application, not the original variable names.
+Live at [explorer.bb84.live](https://explorer.bb84.live). There is no public GitHub repo for this site. The production build was a Vite bundle with source maps disabled, so this is the unminified application, not the original variable names.
 
 | File | What it is |
 | --- | --- |
