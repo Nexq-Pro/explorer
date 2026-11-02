@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Quantum (QPU) job receipts, quantum-seeded randomness and Falcon-512 post-quantum accounts on Solana, read live from the chain.">
+<meta name="theme-color" content="#eaf6ff">
+<meta name="color-scheme" content="light">
+<link rel="icon" type="image/png" sizes="96x96" href="/bb84-logo-96.png">
+<title>bb84 Explorer</title>
+<script type="module" src="/src/main.js"></script>
+<link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+<div class="bb84-ui ex">
+  <header class="ex-header">
+    <a class="ex-home" href="#overview" aria-label="bb84 Explorer home">
+      <span class="bb84-brand"><img src="/bb84-logo-96.png" alt=""><span>bb84<span class="bb84-brand-suffix"> explorer</span></span></span>
+    </a>
+    <form class="ex-search" id="search-form" role="search" autocomplete="off">
+      <label class="bb84-sr-only" for="search-input">Search the bb84 programs on Solana</label>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="search-input" type="search" enterkeyhint="search" spellcheck="false" autocapitalize="off"
+        placeholder="Search address, transaction, job id or slot">
+      <kbd aria-hidden="true">/</kbd>
+    </form>
+    <div class="ex-status" id="status"><span class="bb84-badge bb84-badge--neutral">Loading</span></div>
+    <nav class="ex-nav" id="nav" aria-label="Sections"></nav>
+  </header>
+  <main class="ex-main" id="body"><p class="muted">Reading Solana devnet…</p></main>
+  <footer class="ex-footer">
+    <span class="bb84-brand"><img src="/bb84-logo-96.png" alt=""><span>bb84<span class="bb84-brand-suffix">.sh</span></span></span>
+    <p id="footnote">Experimental software on Solana devnet. Not audited.</p>
+  </footer>
+</div>
+</body>
+</html>
