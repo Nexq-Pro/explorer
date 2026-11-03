@@ -1,17 +1,33 @@
 # bb84 explorer
 
-Live at [explorer.bb84.live](https://explorer.bb84.live). There is no public GitHub repo for this site. The production build was a Vite bundle with source maps disabled, so this is the unminified application, not the original variable names.
+On-chain explorer for bb84 on Solana devnet. It reads QPU job receipts, quantum-seeded randomness, Falcon-512 accounts, and circuit checks straight from the chain.
 
-| File | What it is |
-| --- | --- |
-| `index.html` | Page shell from the live site |
-| `src/main.js` | Explorer application: Solana RPC reads, account decoding, search, and views |
-| `src/styles.css` | Styles from the live site |
-| `public/bb84-logo-96.png` | Logo |
+Live at [explorer.bb84.live](https://explorer.bb84.live). Source: [github.com/BB84-Live/explorer](https://github.com/BB84-Live/explorer).
+
+## What it shows
+
+| Section | Program | Address |
+| --- | --- | --- |
+| QPU receipts | `qproof` | `6pxqWGoxSRBwmL6GJie9BD43HGe3ybFu9xmJQ24TvcXB` |
+| Random values | `qentropy` | `FZXp8BVcsPZcE6ZP4wCYouMsupGEGKSZFwNfzNaoiQmm` |
+| Falcon accounts | `qpt` (blueshift) | `E4cwdChwHz3bqfeLUdJcRnPSsgKBEz7mwov1qCHgEmsK` |
+| Falcon accounts | `qpt` (FN-DSA) | `BfcVJr4WTEJyZfDZ1LtnnmqCiDsVBiHtxiLM7KesoFqG` |
+| Circuit checks | `qsim` | `6sHufVFfaMwxPuDKxBuV8qZqNot8bJNgtFKhZKXHdhSw` |
+
+Search covers addresses, transactions, job ids, and slots. Views are Overview, Falcon accounts, QPU receipts, Random values, and Transactions.
+
+## Run locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Opens at http://localhost:5174. It reads Solana devnet directly. Public RPC endpoints rate-limit with HTTP 429; the page falls back to the snapshot bundled in `src/main.js`.
+Opens at http://localhost:5174.
+
+```bash
+npm run build
+npm run preview
+```
+
+The page talks to Solana devnet over public JSON-RPC (`https://api.devnet.solana.com`, with a public fallback). Those endpoints often answer HTTP 429. When that happens, the page uses the snapshot bundled in `src/main.js`.
