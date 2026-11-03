@@ -430,7 +430,7 @@ async function ie(e, t, n, r) {
     encoding: `json`,
     maxSupportedTransactionVersion: 0
   }]);
-  a(`Challenge memo is on-chain`, (c?.meta?.logMessages?.find(e => e.includes(`bb84 challenge v1`)) ?? ``).includes(t.challenge), `slot ${c?.slot ?? `?`}`);
+  a(`Challenge memo is on-chain`, (c?.meta?.logMessages?.find(e => e.includes(`nexq challenge v1`)) ?? ``).includes(t.challenge), `slot ${c?.slot ?? `?`}`);
   if (c && s) {
     a(`Challenge was posted before the QPU result`, c.slot < s.slot, `memo slot ${c.slot} < receipt slot ${s.slot}`);
   }
@@ -1241,10 +1241,10 @@ var b = {
         lamports: 5000000
       }, {
         kind: `memo`,
-        text: `bb84: paid by a Falcon-512 smart account`
+        text: `nexq: paid by a Falcon-512 smart account`
       }]
     }],
-    logs: [`Instruction: ExecutePq`, `Signed by EhEQCn2UtJk1Z4cvEeucaPrNJkbH8gLKNVPzrUNgA9AE`, `Memo (len 40): "bb84: paid by a Falcon-512 smart account"`, `qpt entry #0: ran 2 instruction(s) (Falcon)`]
+    logs: [`Instruction: ExecutePq`, `Signed by EhEQCn2UtJk1Z4cvEeucaPrNJkbH8gLKNVPzrUNgA9AE`, `Memo (len 40): "nexq: paid by a Falcon-512 smart account"`, `qpt entry #0: ran 2 instruction(s) (Falcon)`]
   }, {
     signature: `5wi34BrxK4apMMM8sj4Kqh7aBDqnjeJdoRnenNuE9iDexMDbnuk3Q48uify1JKS353oa2iXaXMx2MAjZUiSbqrd3`,
     slot: 515786181,
@@ -1974,7 +1974,7 @@ var ce = () => y.cluster === `mainnet-beta` ? `` : `?cluster=${y.cluster}`;
 var j = (e, t) => `<a class="addr" href="${T(e)}" title="${E(e)}">${E(t ?? D(e, 8))}</a>`;
 var M = (e, t) => `<a class="addr" href="${T(e)}" title="${E(e)}">${E(t ?? D(e))}</a>`;
 var N = (e, t) => `<a class="ex-external" href="https://explorer.solana.com/${e}/${E(t)}${ce()}" target="_blank" rel="noopener">Solana Explorer ↗</a>`;
-var P = (e, t, n) => `<span class="bb84-badge ${e}"${n ? ` title="${E(n)}"` : ``}>${E(t)}</span>`;
+var P = (e, t, n) => `<span class="nexq-badge ${e}"${n ? ` title="${E(n)}"` : ``}>${E(t)}</span>`;
 var F = e => e === `Qpu` ? P(`badge-qpu`, `Real QPU`) : e ? P(`badge-sim`, e === `CloudEmulator` ? `Cloud emulator` : `Simulator`) : P(`badge-sim`, `No receipt`);
 var I = {
   withdraw_pq: `Falcon-512 withdrawal`,
@@ -2051,7 +2051,7 @@ var ue = e => {
   }
   return ``;
 };
-var B = `bb84-explorer-tx-v2:${y.cluster}`;
+var B = `nexq-explorer-tx-v2:${y.cluster}`;
 var V = new Map();
 for (let e of b?.activity ?? []) {
   V.set(e.signature, e);
@@ -2081,34 +2081,34 @@ function fe(e) {
 function G() {
   let e = C.data;
   let t;
-  t = C.mode === `live` ? `<span class="bb84-badge bb84-badge--success ex-live" title="Read through ${E(U())}"><i></i>Live · slot ${O(e.slot)}</span>` : C.loading ? `<span class="bb84-badge bb84-badge--neutral">${E(C.progress ? `Reading ${C.progress}…` : `Connecting…`)}</span>` : C.mode === `snapshot` ? `<span class="bb84-badge bb84-badge--neutral" title="${E(C.reason)}">Snapshot · slot ${O(e.slot)}</span>` : `<span class="bb84-badge bb84-badge--neutral">Offline</span>`;
-  document.getElementById(`status`).innerHTML = `${t}<button type="button" class="bb84-button bb84-button--secondary" id="refresh" aria-label="Refresh from Solana" ${C.loading ? `disabled` : ``}>
+  t = C.mode === `live` ? `<span class="nexq-badge nexq-badge--success ex-live" title="Read through ${E(U())}"><i></i>Live · slot ${O(e.slot)}</span>` : C.loading ? `<span class="nexq-badge nexq-badge--neutral">${E(C.progress ? `Reading ${C.progress}…` : `Connecting…`)}</span>` : C.mode === `snapshot` ? `<span class="nexq-badge nexq-badge--neutral" title="${E(C.reason)}">Snapshot · slot ${O(e.slot)}</span>` : `<span class="nexq-badge nexq-badge--neutral">Offline</span>`;
+  document.getElementById(`status`).innerHTML = `${t}<button type="button" class="nexq-button nexq-button--secondary" id="refresh" aria-label="Refresh from Solana" ${C.loading ? `disabled` : ``}>
     <svg class="ex-refresh-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></svg><span class="ex-refresh-text">Refresh</span></button>`;
   document.getElementById(`refresh`).onclick = () => De();
 }
 function K(e, t, n, r = ``) {
-  return `<div class="ex-section-head"><div><span class="bb84-eyebrow">${E(e)}</span><h2>${E(t)}</h2>${n ? `<p>${n}</p>` : ``}</div>${r}</div>`;
+  return `<div class="ex-section-head"><div><span class="nexq-eyebrow">${E(e)}</span><h2>${E(t)}</h2>${n ? `<p>${n}</p>` : ``}</div>${r}</div>`;
 }
 var q = (e, t, n = ``) => `<td data-label="${E(e)}"${n ? ` class="${n}"` : ``}>${t}</td>`;
 function J(e) {
-  return `<div class="bb84-table-wrap"><table class="bb84-table ex-stack"><thead><tr><th>Program</th><th>What it does</th><th>Address</th><th>Status</th></tr></thead><tbody>
+  return `<div class="nexq-table-wrap"><table class="nexq-table ex-stack"><thead><tr><th>Program</th><th>What it does</th><th>Address</th><th>Status</th></tr></thead><tbody>
     ${e.map(e => `<tr>${q(`Program`, `<strong style="font-weight:500">${E(e.label)}</strong>`, `lead`)}${q(`Does`, E(e.role))}
       ${q(`Address`, M(e.address, e.address))}${q(`Status`, e.deployed ? P(`badge-ok`, `Deployed`) : P(`badge-bad`, `Not deployed`))}</tr>`).join(``)}
   </tbody></table></div>`;
 }
-function Y(e, t = `Transactions from the bb84 programs will appear here.`) {
+function Y(e, t = `Transactions from the nexq programs will appear here.`) {
   if (e.length) {
-    return `<div class="bb84-table-wrap"><table class="bb84-table ex-stack"><thead><tr><th>Result</th><th>What happened</th><th class="r">Compute units</th><th>Time</th><th>Transaction</th></tr></thead><tbody>
+    return `<div class="nexq-table-wrap"><table class="nexq-table ex-stack"><thead><tr><th>Result</th><th>What happened</th><th class="r">Compute units</th><th>Time</th><th>Transaction</th></tr></thead><tbody>
     ${e.map(e => `<tr>${q(`Result`, e.ok ? P(`badge-ok`, `OK`) : P(`badge-bad`, `Failed`, e.error))}
-      ${q(`What happened`, e.instructions.length ? e.instructions.map(t => `<div>${L.includes(t.name) && e.ok ? `${P(`badge-falcon`, `Falcon`)} ` : ``}${ue(t)}${E(z(t))}</div>`).join(``) : `<span class="muted">No bb84 program instruction</span>`, `wrap`)}
+      ${q(`What happened`, e.instructions.length ? e.instructions.map(t => `<div>${L.includes(t.name) && e.ok ? `${P(`badge-falcon`, `Falcon`)} ` : ``}${ue(t)}${E(z(t))}</div>`).join(``) : `<span class="muted">No nexq program instruction</span>`, `wrap`)}
       ${q(`Compute units`, O(e.computeUnits), `r num`)}${q(`Time`, A(e.blockTime), `num`)}${q(`Transaction`, j(e.signature))}</tr>`).join(``)}
   </tbody></table></div>`;
   } else {
-    return `<div class="bb84-empty"><h3>No transactions here yet</h3><p>${E(t)}</p></div>`;
+    return `<div class="nexq-empty"><h3>No transactions here yet</h3><p>${E(t)}</p></div>`;
   }
 }
 function X(e) {
-  return `<div class="bb84-table-wrap"><table class="bb84-table ex-stack"><thead><tr><th>#</th><th>Source</th><th>Machine</th><th class="r">Shots</th><th>Job</th><th>Result hash</th><th class="r">Slot</th><th>Recorded</th></tr></thead><tbody>
+  return `<div class="nexq-table-wrap"><table class="nexq-table ex-stack"><thead><tr><th>#</th><th>Source</th><th>Machine</th><th class="r">Shots</th><th>Job</th><th>Result hash</th><th class="r">Slot</th><th>Recorded</th></tr></thead><tbody>
     ${e.map(e => `<tr>${q(`Receipt`, `${M(e.address, `#${e.index}`)}`, `lead`)}${q(`Source`, F(e.source))}${q(`Machine`, `<span class="mono">${E(e.backend)}</span>`)}
       ${q(`Shots`, O(e.shots), `r num`)}
       ${q(`Job`, e.publicJobId ? `<span class="mono">${E(e.publicJobId)}</span>` : `<span class="mono muted" title="sha256 of the private job id">${E(D(e.jobIdHash, 6))}</span>`)}
@@ -2118,7 +2118,7 @@ function X(e) {
 }
 function pe(e, t) {
   let n = t => e.receipts.find(e => e.address === t);
-  return `<div class="bb84-table-wrap"><table class="bb84-table ex-stack"><thead><tr><th>Status</th><th>Seeded by</th><th>Value</th><th class="r">Sampled slot</th><th class="r">Values left</th><th>Account</th></tr></thead><tbody>
+  return `<div class="nexq-table-wrap"><table class="nexq-table ex-stack"><thead><tr><th>Status</th><th>Seeded by</th><th>Value</th><th class="r">Sampled slot</th><th class="r">Values left</th><th>Account</th></tr></thead><tbody>
     ${t.map(e => `<tr>${q(`Status`, P(e.status === `Finalized` ? `badge-ok` : e.status === `Slashed` ? `badge-bad` : `badge-sim`, e.status))}
       ${q(`Seeded by`, `${F(n(e.receipt)?.source)} ${M(e.receipt, n(e.receipt)?.backend ?? D(e.receipt))}`)}
       ${q(`Value`, e.status === `Finalized` ? `<span class="mono" title="${E(e.value)}">${E(D(e.value, 10))}</span>` : `–`)}
@@ -2128,19 +2128,19 @@ function pe(e, t) {
 function Z(e, t, n = ``) {
   let r = e.activity.filter(e => e.ok && e.instructions.some(e => L.includes(e.name) && e.entry === t.address));
   let i = Math.max(0, t.lamports - (t.rentLamports ?? 0));
-  return `<article class="bb84-panel">
+  return `<article class="nexq-panel">
     <div class="ex-card-head"><h3>Account #${t.index} · ${E(t.build.replace(`qpt · `, ``))} verifier</h3>
       ${t.qday ? P(`badge-falcon`, `Q-Day mode on`) : P(`badge-sim`, `Ed25519 still allowed`)}</div>
     ${n ? `<p class="muted" style="font-size:13px;margin-bottom:6px">${n}</p>` : ``}
     <dl class="ex-rows">
-      <div class="bb84-data-row"><dt>Account</dt><dd>${M(t.address)}</dd></div>
-      <div class="bb84-data-row"><dt>Owner</dt><dd>${M(t.owner)}</dd></div>
-      ${t.wallet ? `<div class="bb84-data-row"><dt>Smart wallet</dt><dd>${M(t.wallet)} <span class="num">${k(t.walletLamports ?? 0)}</span></dd></div>` : ``}
-      <div class="bb84-data-row"><dt>Vault balance</dt><dd class="num">${k(i)} <span class="muted">+ ${k(t.rentLamports ?? 0)} rent</span></dd></div>
-      <div class="bb84-data-row"><dt>Falcon-512 key</dt><dd class="num">${O(t.keyBytes)} bytes${t.keyBytes === 1024 ? ` (prepared form)` : ``}</dd></div>
-      <div class="bb84-data-row"><dt>Registered</dt><dd class="num">slot ${O(t.registeredSlot)}</dd></div>
-      <div class="bb84-data-row"><dt>Key seeded by</dt><dd>${F(t.receiptSource)} ${M(t.receipt)}</dd></div>
-      <div class="bb84-data-row"><dt>Falcon signatures used</dt><dd class="num">${O(t.nonce)}${r[0]?.computeUnits ? ` <span class="muted">· latest ${O(r[0].computeUnits)} CU</span>` : ``}</dd></div>
+      <div class="nexq-data-row"><dt>Account</dt><dd>${M(t.address)}</dd></div>
+      <div class="nexq-data-row"><dt>Owner</dt><dd>${M(t.owner)}</dd></div>
+      ${t.wallet ? `<div class="nexq-data-row"><dt>Smart wallet</dt><dd>${M(t.wallet)} <span class="num">${k(t.walletLamports ?? 0)}</span></dd></div>` : ``}
+      <div class="nexq-data-row"><dt>Vault balance</dt><dd class="num">${k(i)} <span class="muted">+ ${k(t.rentLamports ?? 0)} rent</span></dd></div>
+      <div class="nexq-data-row"><dt>Falcon-512 key</dt><dd class="num">${O(t.keyBytes)} bytes${t.keyBytes === 1024 ? ` (prepared form)` : ``}</dd></div>
+      <div class="nexq-data-row"><dt>Registered</dt><dd class="num">slot ${O(t.registeredSlot)}</dd></div>
+      <div class="nexq-data-row"><dt>Key seeded by</dt><dd>${F(t.receiptSource)} ${M(t.receipt)}</dd></div>
+      <div class="nexq-data-row"><dt>Falcon signatures used</dt><dd class="num">${O(t.nonce)}${r[0]?.computeUnits ? ` <span class="muted">· latest ${O(r[0].computeUnits)} CU</span>` : ``}</dd></div>
     </dl>
     ${r.length ? `<p class="ex-card-foot">Latest Falcon-signed transaction: ${j(r[0].signature)}</p>` : ``}
   </article>`;
@@ -2151,45 +2151,45 @@ function me(e) {
   let r = n.map(e => e.computeUnits).filter(Boolean);
   let i = e.entries.filter(e => e.qday).length;
   return `<section class="ex-intro">
-    <span class="bb84-eyebrow">Solana ${E(e.cluster)} · quantum and post-quantum activity</span>
+    <span class="nexq-eyebrow">Solana ${E(e.cluster)} · quantum and post-quantum activity</span>
     <h1>Quantum jobs, on-chain.<span>Falcon-signed on Solana.</span></h1>
-    <p class="ex-lead"><strong>Every quantum computer job, quantum-seeded random value and Falcon-512 post-quantum account</strong> that the bb84 programs have put on Solana, read straight from the chain.</p>
+    <p class="ex-lead"><strong>Every quantum computer job, quantum-seeded random value and Falcon-512 post-quantum account</strong> that the nexq programs have put on Solana, read straight from the chain.</p>
   </section>
   <section class="ex-stats" aria-label="Summary">
-    <div class="bb84-stat"><span class="bb84-eyebrow">QPU receipts</span><span class="bb84-stat-value num">${O(e.receipts.length)}</span>
-      <span class="bb84-stat-meta">${P(`badge-qpu`, `${t} real QPU`)} ${P(`badge-sim`, `${e.receipts.length - t} simulator`)}</span></div>
-    <div class="bb84-stat"><span class="bb84-eyebrow">Falcon accounts</span><span class="bb84-stat-value num">${O(e.entries.length)}</span>
-      <span class="bb84-stat-meta">${i} in Q-Day mode: only Falcon signatures move funds</span></div>
-    <div class="bb84-stat"><span class="bb84-eyebrow">Falcon-signed transactions</span><span class="bb84-stat-value num">${O(n.length)}</span>
-      <span class="bb84-stat-meta">among the latest ${O(e.activity.length)} program transactions</span></div>
-    <div class="bb84-stat"><span class="bb84-eyebrow">Cheapest Falcon check</span><span class="bb84-stat-value num">${r.length ? O(Math.min(...r)) : `–`}</span>
-      <span class="bb84-stat-meta">compute units, of 1,400,000 per transaction</span></div>
+    <div class="nexq-stat"><span class="nexq-eyebrow">QPU receipts</span><span class="nexq-stat-value num">${O(e.receipts.length)}</span>
+      <span class="nexq-stat-meta">${P(`badge-qpu`, `${t} real QPU`)} ${P(`badge-sim`, `${e.receipts.length - t} simulator`)}</span></div>
+    <div class="nexq-stat"><span class="nexq-eyebrow">Falcon accounts</span><span class="nexq-stat-value num">${O(e.entries.length)}</span>
+      <span class="nexq-stat-meta">${i} in Q-Day mode: only Falcon signatures move funds</span></div>
+    <div class="nexq-stat"><span class="nexq-eyebrow">Falcon-signed transactions</span><span class="nexq-stat-value num">${O(n.length)}</span>
+      <span class="nexq-stat-meta">among the latest ${O(e.activity.length)} program transactions</span></div>
+    <div class="nexq-stat"><span class="nexq-eyebrow">Cheapest Falcon check</span><span class="nexq-stat-value num">${r.length ? O(Math.min(...r)) : `–`}</span>
+      <span class="nexq-stat-meta">compute units, of 1,400,000 per transaction</span></div>
   </section>`;
 }
 function he(e) {
   let t = e.checks.filter(e => e.ok).length;
   let n = e => `${(e * 100).toFixed(1)}%`;
-  return `<article class="bb84-panel ex-run">
+  return `<article class="nexq-panel ex-run">
     <div class="ex-grid-2">
       <div style="display:grid;gap:16px;align-content:start;min-width:0">
         <div class="ex-run-head">${P(`badge-qpu`, `Real QPU`)} ${P(t === e.checks.length ? `badge-ok` : `badge-bad`, `${t}/${e.checks.length} checks pass on-chain`)} ${P(`badge-sim`, e.date)}</div>
         <h3>${E(e.name)}: ${E(e.provider)} ${E(e.device)} to Solana</h3>
         <p class="muted" style="font-size:13px">A public challenge went on Solana first. It set the rotation angle of every qubit, so the share of 1s was predictable before the run. The QPU result, its receipt and the final random value then landed on-chain.</p>
         <dl class="ex-rows">
-          <div class="bb84-data-row"><dt>IBM job</dt><dd><a class="addr" href="${T(e.jobId)}">${E(e.jobId)}</a></dd></div>
-          <div class="bb84-data-row"><dt>Measured</dt><dd class="num">${O(e.qubits)} qubits × ${O(e.shots)} shots = ${O(e.bits)} bits</dd></div>
-          <div class="bb84-data-row"><dt>Receipt</dt><dd>${M(e.receipt)}</dd></div>
-          <div class="bb84-data-row"><dt>Challenge memo</dt><dd>${j(e.memoSignature)}</dd></div>
-          <div class="bb84-data-row"><dt>Random value</dt><dd class="mono">${E(D(e.value, 12))}</dd></div>
+          <div class="nexq-data-row"><dt>IBM job</dt><dd><a class="addr" href="${T(e.jobId)}">${E(e.jobId)}</a></dd></div>
+          <div class="nexq-data-row"><dt>Measured</dt><dd class="num">${O(e.qubits)} qubits × ${O(e.shots)} shots = ${O(e.bits)} bits</dd></div>
+          <div class="nexq-data-row"><dt>Receipt</dt><dd>${M(e.receipt)}</dd></div>
+          <div class="nexq-data-row"><dt>Challenge memo</dt><dd>${j(e.memoSignature)}</dd></div>
+          <div class="nexq-data-row"><dt>Random value</dt><dd class="mono">${E(D(e.value, 12))}</dd></div>
         </dl>
         <div class="ex-bars" role="img" aria-label="Share of 1s: predicted ${n(e.expected)}, measured ${n(e.observed)}; a fair coin gives 50%">
-          <span class="bb84-eyebrow">Share of 1s · line marks a fair coin (50%)</span>
+          <span class="nexq-eyebrow">Share of 1s · line marks a fair coin (50%)</span>
           <div class="ex-bar"><span>Predicted</span><div class="ex-track"><span style="width:${(e.expected * 100).toFixed(2)}%;background:#9fbcd6"></span><i></i></div><span class="num">${n(e.expected)}</span></div>
-          <div class="ex-bar"><span>${E(e.device)}</span><div class="ex-track"><span style="width:${(e.observed * 100).toFixed(2)}%;background:var(--bb84-blue)"></span><i></i></div><span class="num">${n(e.observed)}</span></div>
+          <div class="ex-bar"><span>${E(e.device)}</span><div class="ex-track"><span style="width:${(e.observed * 100).toFixed(2)}%;background:var(--nexq-blue)"></span><i></i></div><span class="num">${n(e.observed)}</span></div>
         </div>
       </div>
       <div style="display:grid;gap:14px;align-content:start;min-width:0">
-        <span class="bb84-eyebrow">Checked against the chain${C.mode === `live` ? ` just now` : ` when the snapshot was taken`}</span>
+        <span class="nexq-eyebrow">Checked against the chain${C.mode === `live` ? ` just now` : ` when the snapshot was taken`}</span>
         <ul class="ex-checks">${e.checks.map(e => `<li><span class="ex-mark ${e.ok ? `ok` : `bad`}" aria-label="${e.ok ? `pass` : `fail`}">${e.ok ? `✓` : `✕`}</span><span>${E(e.label)}<small>${E(e.detail)}</small></span></li>`).join(``)}</ul>
       </div>
     </div>
@@ -2199,23 +2199,23 @@ function ge(e) {
   let t = e.activity.filter(e => e.instructions.length).slice(0, 6);
   return `${me(e)}
     ${e.runs.length ? `<section class="ex-section">${K(`Evidence`, `Run 1: a real quantum computer, recorded on Solana`, `Re-checked against the chain on every load. Receipts prove what was recorded and when, not that a machine was quantum.`)}${e.runs.map(he).join(``)}</section>` : ``}
-    <section class="ex-section">${K(`Latest`, `Recent transactions`, ``, `<a class="bb84-text-link" href="#transactions">All transactions</a>`)}${Y(t)}</section>
-    <section class="ex-section">${K(`Programs`, `The bb84 programs on Solana`, ``)}${J(e.programs)}</section>`;
+    <section class="ex-section">${K(`Latest`, `Recent transactions`, ``, `<a class="nexq-text-link" href="#transactions">All transactions</a>`)}${Y(t)}</section>
+    <section class="ex-section">${K(`Programs`, `The nexq programs on Solana`, ``)}${J(e.programs)}</section>`;
 }
 function _e(e) {
-  let t = e.entries.length ? `<div class="ex-cards">${e.entries.map(t => Z(e, t)).join(``)}</div>` : `<div class="bb84-empty"><h3>No Falcon accounts yet</h3><p>Accounts appear here once a Falcon-512 key is registered.</p></div>`;
+  let t = e.entries.length ? `<div class="ex-cards">${e.entries.map(t => Z(e, t)).join(``)}</div>` : `<div class="nexq-empty"><h3>No Falcon accounts yet</h3><p>Accounts appear here once a Falcon-512 key is registered.</p></div>`;
   let n = e.entries.length && e.entries.every(e => e.receiptSource !== `Qpu`);
   return `<section class="ex-section">${K(`Post-quantum custody`, `Falcon accounts`, `Each account stores a Falcon-512 public key, the slot it was registered in, and the receipt of the job that seeded it. Its smart wallet can run any Solana instruction: SOL and token transfers, memos, other programs. With Q-Day mode on, the owner's normal Ed25519 key can no longer move funds; only a Falcon-512 signature, checked by the program, can.`)}
     ${t}
-    ${n ? `<div class="bb84-alert"><div class="bb84-alert-body"><strong>Simulator-seeded demo keys</strong><span>These keys were seeded from local simulator bits, and their receipts say so. Security comes from Falcon-512; the quantum source records where a key's randomness came from.</span></div></div>` : ``}
+    ${n ? `<div class="nexq-alert"><div class="nexq-alert-body"><strong>Simulator-seeded demo keys</strong><span>These keys were seeded from local simulator bits, and their receipts say so. Security comes from Falcon-512; the quantum source records where a key's randomness came from.</span></div></div>` : ``}
   </section>`;
 }
 function ve(e) {
-  let t = e.receipts.length ? X([...e.receipts].reverse()) : `<div class="bb84-empty"><h3>No quantum jobs recorded yet</h3><p>Receipts appear here when the relayer records a job.</p></div>`;
+  let t = e.receipts.length ? X([...e.receipts].reverse()) : `<div class="nexq-empty"><h3>No quantum jobs recorded yet</h3><p>Receipts appear here when the relayer records a job.</p></div>`;
   return `<section class="ex-section">${K(`qproof`, `QPU receipts`, `One receipt per quantum job: which machine, how many shots, and hashes of the circuit and the results. The source is part of the record, so a simulator run can't pass as hardware. Private job ids appear only as hashes.`)}${t}</section>`;
 }
 function ye(e) {
-  let t = e.vars.length ? pe(e, e.vars) : `<div class="bb84-empty"><h3>No random values yet</h3><p>Values appear here once a provider commits one.</p></div>`;
+  let t = e.vars.length ? pe(e, e.vars) : `<div class="nexq-empty"><h3>No random values yet</h3><p>Values appear here once a provider commits one.</p></div>`;
   return `<section class="ex-section">${K(`qentropy`, `Quantum-seeded random values`, `The provider commits to a hash chain seeded from quantum bits, Solana samples a slot hash nobody could predict, and the revealed value is sha256(seed ‖ slot hash). Any program can read it.`)}${t}</section>`;
 }
 function be(e) {
@@ -2227,8 +2227,8 @@ function be(e) {
     randomness: e => e.instructions.some(e => e.program === `qentropy`),
     qsim: e => e.instructions.some(e => e.program === `qsim`)
   }[C.txFilter];
-  return `<section class="ex-section">${K(`Activity`, `Transactions`, `Latest transactions for each program, newest first. A successful Falcon transaction means the program checked the 666-byte Falcon-512 signature itself; a bad signature fails the whole transaction.`, `<fieldset class="bb84-fieldset ex-filter"><legend class="bb84-sr-only">Show</legend><div class="bb84-segmented">
-    ${se.map(e => `<label class="bb84-segment"><input type="radio" name="tx-filter" id="tx-filter-${e.id}" value="${e.id}" ${e.id === C.txFilter ? `checked` : ``}><span>${e.title}</span></label>`).join(``)}
+  return `<section class="ex-section">${K(`Activity`, `Transactions`, `Latest transactions for each program, newest first. A successful Falcon transaction means the program checked the 666-byte Falcon-512 signature itself; a bad signature fails the whole transaction.`, `<fieldset class="nexq-fieldset ex-filter"><legend class="nexq-sr-only">Show</legend><div class="nexq-segmented">
+    ${se.map(e => `<label class="nexq-segment"><input type="radio" name="tx-filter" id="tx-filter-${e.id}" value="${e.id}" ${e.id === C.txFilter ? `checked` : ``}><span>${e.title}</span></label>`).join(``)}
   </div></fieldset>`)}
     ${Y(t.filter(n))}</section>`;
 }
@@ -2275,7 +2275,7 @@ async function Q(e) {
     }
     if (t) {
       i(`Transaction`, `${Y([t])}
-        ${t.logs?.length ? `<div class="bb84-code ex-logs"><span class="bb84-eyebrow">Program logs</span><pre>${t.logs.map(E).join(`
+        ${t.logs?.length ? `<div class="nexq-code ex-logs"><span class="nexq-eyebrow">Program logs</span><pre>${t.logs.map(E).join(`
 `)}</pre></div>` : ``}`, 1);
     }
   }
@@ -2300,7 +2300,7 @@ async function Q(e) {
     }
     let c = a.filter(t => t.accounts?.includes(e) || t.instructions.some(t => [t.entry, t.wallet, t.destination].includes(e)));
     if (c.length) {
-      i(`bb84 transactions involving this address`, Y(c), c.length);
+      i(`nexq transactions involving this address`, Y(c), c.length);
     }
     if (C.mode === `live`) {
       try {
@@ -2355,7 +2355,7 @@ async function Q(e) {
 function Ce(e) {
   let t = C.search;
   if (!C.query) {
-    return `<section class="ex-section">${K(`Search`, `Search the bb84 programs`, `Type into the search bar at the top, or try one of these.`)}${Ee(e)}</section>`;
+    return `<section class="ex-section">${K(`Search`, `Search the nexq programs`, `Type into the search bar at the top, or try one of these.`)}${Ee(e)}</section>`;
   }
   if (!t || t.q !== C.query) {
     return `<section class="ex-section"><p class="muted">Searching…</p></section>`;
@@ -2367,26 +2367,26 @@ function Ce(e) {
     slot: `Slot`,
     text: `Search`
   }[t.kind];
-  let i = `<div class="ex-section-head"><div><span class="bb84-eyebrow">${E(r)}</span>
+  let i = `<div class="ex-section-head"><div><span class="nexq-eyebrow">${E(r)}</span>
     <h2 class="mono" style="font-size:clamp(15px,2.2vw,22px);letter-spacing:-.01em;overflow-wrap:anywhere">${E(t.q)}</h2></div>${n}</div>`;
-  let a = t.account ? `<div class="bb84-panel"><dl class="ex-rows">
-      <div class="bb84-data-row"><dt>On Solana</dt><dd>${t.account.exists ? P(`badge-ok`, `Account exists`) : P(`badge-sim`, `No account at this address`)}</dd></div>
-      ${t.account.exists ? `<div class="bb84-data-row"><dt>Balance</dt><dd class="num">${k(t.account.lamports)}</dd></div>
-      <div class="bb84-data-row"><dt>Owned by</dt><dd>${E(e.programs.find(e => e.address === t.account.owner)?.label ?? Te(t.account.owner))} ${M(t.account.owner)}</dd></div>
-      <div class="bb84-data-row"><dt>Data</dt><dd class="num">${t.account.executable ? `Program (executable)` : `${O(t.account.space ?? 0)} bytes`}</dd></div>` : ``}
-      <div class="bb84-data-row"><dt>Latest transactions</dt><dd>${t.account.signatures.length ? `` : `none`}</dd></div>
+  let a = t.account ? `<div class="nexq-panel"><dl class="ex-rows">
+      <div class="nexq-data-row"><dt>On Solana</dt><dd>${t.account.exists ? P(`badge-ok`, `Account exists`) : P(`badge-sim`, `No account at this address`)}</dd></div>
+      ${t.account.exists ? `<div class="nexq-data-row"><dt>Balance</dt><dd class="num">${k(t.account.lamports)}</dd></div>
+      <div class="nexq-data-row"><dt>Owned by</dt><dd>${E(e.programs.find(e => e.address === t.account.owner)?.label ?? Te(t.account.owner))} ${M(t.account.owner)}</dd></div>
+      <div class="nexq-data-row"><dt>Data</dt><dd class="num">${t.account.executable ? `Program (executable)` : `${O(t.account.space ?? 0)} bytes`}</dd></div>` : ``}
+      <div class="nexq-data-row"><dt>Latest transactions</dt><dd>${t.account.signatures.length ? `` : `none`}</dd></div>
     </dl>${t.account.signatures.length ? `<ul class="ex-siglist">${t.account.signatures.map(e => `<li>${e.ok ? `` : `${P(`badge-bad`, `Failed`)} `}${j(e.signature)}<span class="muted num">${A(e.blockTime)}</span></li>`).join(``)}</ul>` : ``}</div>` : ``;
   let o = t.groups.map(e => `<div class="ex-result-group"><h3>${E(e.title)}${e.count > 1 ? `<span class="count">${e.count}</span>` : ``}</h3>${e.html}${e.note ? `<p class="muted" style="font-size:12px">${E(e.note)}</p>` : ``}</div>`).join(``);
   let s = ``;
   if (!t.loading && !t.groups.length && !t.account) {
-    s = `<div class="bb84-empty"><h3>Nothing from the bb84 programs matches</h3>
+    s = `<div class="nexq-empty"><h3>Nothing from the nexq programs matches</h3>
       <p>${t.kind === `signature` || t.kind === `address` ? `${C.mode === `live` ? `Solana has no record of it on ${E(y.cluster)}.` : `It isn't in the snapshot, and Solana can't be reached right now.`} Check the value, or open it on Solana Explorer.` : `Try a full address, a transaction signature, a QPU job id, a slot number, or words like memo, token or ibm_fez.`}</p></div>${Ee(e)}`;
   }
   let c = t.account ? `<div class="ex-result-group"><h3>Account on Solana</h3>${a}</div>` : ``;
   return `<section class="ex-section">${i}
-    ${t.loading ? `<div class="bb84-progress-field"><span class="muted">Searching${C.mode === `live` ? ` Solana` : ` the snapshot`}…</span><div class="bb84-progress bb84-progress--indeterminate"><span></span></div></div>` : ``}
+    ${t.loading ? `<div class="nexq-progress-field"><span class="muted">Searching${C.mode === `live` ? ` Solana` : ` the snapshot`}…</span><div class="nexq-progress nexq-progress--indeterminate"><span></span></div></div>` : ``}
     ${o}${c}${s}
-    ${t.accountError ? `<div class="bb84-alert bb84-alert--warning"><div class="bb84-alert-body"><strong>Live lookup failed</strong><span>${E(t.accountError)}. Results above come from the data already loaded.</span></div></div>` : ``}
+    ${t.accountError ? `<div class="nexq-alert nexq-alert--warning"><div class="nexq-alert-body"><strong>Live lookup failed</strong><span>${E(t.accountError)}. Results above come from the data already loaded.</span></div></div>` : ``}
   </section>`;
 }
 var we = {
@@ -2399,7 +2399,7 @@ var Te = e => we[e] ?? ``;
 function Ee(e) {
   let t = e.entries[0];
   let n = W(e)[0];
-  return `<div class="ex-hints">${[t && [t.address, `A Falcon account`], t?.wallet && [t.wallet, `A smart wallet`], n && [n.signature, `A Falcon-signed transaction`], e.runs[0] && [e.runs[0].jobId, `The Run 1 IBM job id`], [`ibm_fez`, `A quantum computer`], [`memo`, `Transactions with a memo`]].filter(Boolean).map(([e, t]) => `<a class="bb84-badge bb84-badge--neutral" href="${T(e)}">${E(t)}</a>`).join(``)}</div>`;
+  return `<div class="ex-hints">${[t && [t.address, `A Falcon account`], t?.wallet && [t.wallet, `A smart wallet`], n && [n.signature, `A Falcon-signed transaction`], e.runs[0] && [e.runs[0].jobId, `The Run 1 IBM job id`], [`ibm_fez`, `A quantum computer`], [`memo`, `Transactions with a memo`]].filter(Boolean).map(([e, t]) => `<a class="nexq-badge nexq-badge--neutral" href="${T(e)}">${E(t)}</a>`).join(``)}</div>`;
 }
 function $() {
   let e = C.data;
@@ -2411,7 +2411,7 @@ function $() {
   }
   let n = document.getElementById(`body`);
   if (!e) {
-    n.innerHTML = C.mode === `error` ? `<div class="bb84-alert bb84-alert--error"><div class="bb84-alert-body"><strong>Couldn't read Solana</strong><span>${E(C.reason)} Check your connection and press Refresh.</span></div></div>` : `<div class="bb84-progress-field"><span class="muted">Reading ${E(C.progress || `Solana devnet`)}…</span><div class="bb84-progress bb84-progress--indeterminate"><span></span></div></div>`;
+    n.innerHTML = C.mode === `error` ? `<div class="nexq-alert nexq-alert--error"><div class="nexq-alert-body"><strong>Couldn't read Solana</strong><span>${E(C.reason)} Check your connection and press Refresh.</span></div></div>` : `<div class="nexq-progress-field"><span class="muted">Reading ${E(C.progress || `Solana devnet`)}…</span><div class="nexq-progress nexq-progress--indeterminate"><span></span></div></div>`;
     return;
   }
   let r = {

@@ -1,8 +1,8 @@
-# bb84 explorer
+# nexq explorer
 
-On-chain explorer for bb84 on Solana devnet. It reads QPU job receipts, quantum-seeded randomness, Falcon-512 accounts, and circuit checks straight from the chain.
+On-chain explorer for nexq on Solana devnet. It reads QPU job receipts, quantum-seeded randomness, Falcon-512 accounts, and circuit checks straight from the chain.
 
-Live at [explorer.bb84.live](https://explorer.bb84.live). Source: [github.com/BB84-Live/explorer](https://github.com/BB84-Live/explorer).
+Live at [explorer.nexq.pro](https://explorer.nexq.pro). Source: [github.com/NEXQ-Live/explorer](https://github.com/NexQ/explorer).
 
 ## What it shows
 
